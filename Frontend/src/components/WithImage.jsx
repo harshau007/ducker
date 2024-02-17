@@ -3,6 +3,9 @@ import { useState } from "react";
 import Sidebar from "./Sidebar";
 import { useParams } from 'react-router-dom';
 import Logs from "./Logs";
+import Graph1 from "./Graph1";
+import Graph2 from "./Graph2";
+import Graph3 from "./Graph3";
 
 
 function WithImage(){
@@ -50,21 +53,20 @@ function WithImage(){
             {
                 showDiv1 && (
                 <div className="bg-[#121212]">
-                    <Logs id={id}/>
+                    <Graph1 id={id}/>
                 </div>)
             }
             {
                 showDiv2 && (
                 <div className="bg-[#121212]">
-                    GRAPH 2
+                    <Graph2 id={id}/>
 
                 </div>)
             }
             {
                 showDiv3 && (
                 <div className="bg-[#121212]">
-                    GRAPH 3
-
+                    <Graph3 id={id} />
                 </div>)
             }
 

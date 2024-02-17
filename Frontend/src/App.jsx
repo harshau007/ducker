@@ -19,7 +19,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<NoImage />} />
           <Route path='/docker/:id' element={<WithImage />} />
-          <Route path='/graph' element={<Graph />} />
+          <Route path='/graph' element={<Graph id={"450c2dc03a"}/>} />
           <Route path='/logs' element={<Logs />} />
         </Routes>
       </div>

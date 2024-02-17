@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Chart from 'chart.js/auto';
 
 
-const Graph1 = ({id}) => {
+const Graph3 = ({id}) => {
   const [cpuUsageData, setCpuUsageData] = useState([]);
   const [chart, setChart] = useState(null);
   useEffect(() => {
@@ -10,7 +10,7 @@ const Graph1 = ({id}) => {
       try {
         const response = await fetch(`http://localhost:3000/docker/stats/${id}`);
         const data = await response.json();
-        const newCpuUsageData = [...cpuUsageData, data.cpuUsage].slice(-10);
+        const newCpuUsageData = [...cpuUsageData, data.networks.eth0.rx_bytes].slice(-10);
         setCpuUsageData(newCpuUsageData);
 
         if (chart) {
@@ -24,25 +24,26 @@ const Graph1 = ({id}) => {
       }
     };
 
-    const intervalId = setInterval(fetchData, 1000);
+    const intervalId = setInterval(fetchData, 2000);
 
     return () => clearInterval(intervalId);
   }, [cpuUsageData, chart]);
 
   useEffect(() => {
-    const ctx = document.getElementById('cpuChart');
+    const ctx = document.getElementById('networkChart');
     const newChart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: [],
         datasets: [
           {
-            label: 'CPU Usage',
+            label: 'Network Usage',
             data: [],
             fill: true,
-            borderColor: '#71f5b3',
+            borderColor: '#ca9eff',
             tension: 0.5,
           },
+
         ],
       },
     });
@@ -52,7 +53,7 @@ const Graph1 = ({id}) => {
     return () => newChart.destroy();
   }, []);
 
-  return <canvas id="cpuChart" />;
+  return <canvas id="networkChart" />;
 };
 
-export default Graph1;
+export default Graph3;
