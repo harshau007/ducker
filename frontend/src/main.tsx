@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
 import './index.css'
+import NoImage from './components/NoImage.tsx'
+import WithImage from './components/WithImage.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <NoImage/>
+    <WithImage/>
   </React.StrictMode>,
 )
