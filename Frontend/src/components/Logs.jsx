@@ -1,28 +1,20 @@
 import React, { useState, useEffect } from "react";
-
-const Logs = () => {
+import axios from 'axios'
+const Logs = ({ id }) => {
   const [stats, setStats] = useState(null);
 
+  const fetchData = async () => {
+    const res = await axios.get(`http://localhost:3000/docker/stats/${id}`)
+    setStats(res.data)
+  }
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8080/ws/7dd36b74f9dc/stats");
-
-    ws.onmessage = (event) => {
-      const receivedStats = JSON.parse(event.data);
-      console.log(receivedStats);
-      setStats(receivedStats);
-    };
-
-    ws.onerror = (event) => {
-      console.error("WebSocket error observed:", event);
-    };
-
-    // Clean up WebSocket connection on unmount
-    return () => {
-      ws.close();
-    };
+    setInterval(() => {
+      fetchData();
+    }, 1000);
   }, []);
 
   return (
+    <>
     <div>
       <h1>Docker Stats</h1>
       {stats && (
@@ -31,6 +23,10 @@ const Logs = () => {
         </pre>
       )}
     </div>
+    {/* <div>
+      {stats}
+    </div> */}
+    </>
   );
 };
 

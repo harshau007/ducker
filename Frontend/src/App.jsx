@@ -13,12 +13,12 @@ const App = () => {
     <Router>
       <div>
         {/* Navigation Links */}
-        
-        
+
+
         {/* Route configuration */}
         <Routes>
           <Route path="/" element={<NoImage />} />
-          <Route path='/docker/*' element={<WithImage />} />
+          <Route path='/docker/:id' element={<WithImage />} />
           <Route path='/graph' element={<Graph />} />
           <Route path='/logs' element={<Logs />} />
         </Routes>

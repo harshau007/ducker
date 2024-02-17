@@ -16,14 +16,12 @@ export class DockerService {
   }
 
   async getAllContainers() {
-    return await this.docker.listContainers({ all: true });
+    return await this.docker.listContainers({ all: false });
   }
 
   async getStats(id: string) {
     const container = this.docker.getContainer(id);
     const inspectionInfo = await container.inspect();
-    const cpuLimit = inspectionInfo.HostConfig.CpuPeriod;
-    const memoryLimit = inspectionInfo.HostConfig.Memory;
     const stats = await new Promise<any>((resolve, reject) => {
       container.stats({stream: false}, (err, stats) => {
         if (err) {
@@ -32,7 +30,7 @@ export class DockerService {
         const cpuUsage = stats.cpu_stats.cpu_usage.total_usage;
         const memoryUsage = stats.memory_stats && stats.memory_stats.usage ? stats.memory_stats.usage : 'N/A';
         const networks = stats.networks || 'N/A';
-        resolve({cpuUsage, cpuLimit, memoryUsage, memoryLimit, networks});
+        resolve({cpuUsage, memoryUsage, networks});
       });
     });
     return stats;

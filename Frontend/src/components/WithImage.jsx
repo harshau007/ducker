@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 import Sidebar from "./Sidebar";
+import { useParams } from 'react-router-dom';
+import Logs from "./Logs";
 
 
 function WithImage(){
@@ -23,11 +25,12 @@ function WithImage(){
         setShowDiv2(false);
         setShowDiv3(true);
     }
-    
-    return(
-        < section className="flex gap-8 bg-black text-white h-screen">
 
-            
+    const { id }= useParams();
+    return(
+        <section className="flex gap-8 bg-black text-white h-screen">
+
+
             <Sidebar />
 
         <div className="w-[85%] ">
@@ -38,7 +41,7 @@ function WithImage(){
                 CPU USAGE
             </div>
             <div className="bg-[#121212] p-4 rounded-md cursor-pointer" onClick={handleClick2}>
-                RAM USAGE  
+                RAM USAGE
             </div>
             <div className="bg-[#121212] p-4 rounded-md cursor-pointer" onClick={handleClick3}>
                 NETWORK USAGE
@@ -47,8 +50,7 @@ function WithImage(){
             {
                 showDiv1 && (
                 <div className="bg-[#121212]">
-                    GRAPH 1
-
+                    <Logs id={id}/>
                 </div>)
             }
             {

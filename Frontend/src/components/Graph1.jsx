@@ -16,7 +16,7 @@ defaults.plugins.title.color = "black";
 const generateRandomData = () => {
   return {
     label: `Label ${Math.floor(Math.random() * 100)}`,
-    revenue: Math.floor(Math.random() * 100000),
+    revenue: Math.floor(Math.random() * 100),
   };
 };
 
@@ -76,7 +76,7 @@ export const Graph1 = () => {
         />
       </div>
     </div>
-    
+
   );
 };
 
