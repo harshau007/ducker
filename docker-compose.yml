@@ -1,6 +1,11 @@
 version: '3.9'
 
 services:
+  frontend:
+    image: harshau04/ducker-frontend:dev
+    ports:
+      - "80:80"
+
   ducker-alerting:
     image: harshau04/ducker-alerting:dev
     ports:
@@ -18,3 +23,10 @@ services:
         target: /var/run/docker.sock
     cpus: 2
     mem_limit: 512m
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
