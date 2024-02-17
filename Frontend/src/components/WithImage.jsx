@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import Sidebar from "./Sidebar";
+
+
 function WithImage(){
     const [showDiv1, setShowDiv1] = useState(true);
     const handleClick1 = () => {
@@ -20,8 +23,16 @@ function WithImage(){
         setShowDiv2(false);
         setShowDiv3(true);
     }
+    
     return(
-        <section className="bg-black text-white h-screen">
+        < section className="flex gap-8 bg-black text-white h-screen">
+
+            
+            <Sidebar />
+
+        <div className="w-[85%] ">
+
+
             <div className="flex gap-10 justify-around">
             <div className="bg-[#121212] p-4 rounded-md cursor-pointer" onClick={handleClick1}>
                 CPU USAGE
@@ -56,7 +67,9 @@ function WithImage(){
             }
 
 
+        </div>
         </section>
+
     )
 }
 export default WithImage;
