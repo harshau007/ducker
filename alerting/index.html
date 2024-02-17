@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Docker Stats</title>
+    <style>
+        #stats {
+            font-family: Arial, sans-serif;
+            white-space: pre;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Docker Stats</h1>
+    <div id="stats"></div>
+    <script>
+        var ws = new WebSocket('ws://localhost:8080/ws/c0b4d0d3f0ce/stats');
+
+        ws.onmessage = function(event) {
+            var stats = JSON.parse(event.data);
+            var statsDiv = document.getElementById('stats');
+            statsDiv.textContent = JSON.stringify(stats, null, 2);
+        };
+
+        ws.onerror = function(event) {
+            console.error("WebSocket error observed:", event);
+        };
+    </script>
+</body>
+</html>
