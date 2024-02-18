@@ -1,12 +1,10 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { DockerService } from './docker.service';
-import { LogsGateway } from './logs.websocket';
 
 @Controller('docker')
 export class DockerController {
   constructor(
-    private readonly dockerService: DockerService,
-    private readonly logGateway: LogsGateway
+    private readonly dockerService: DockerService
   ) {}
 
   @Get()
@@ -26,9 +24,13 @@ export class DockerController {
     return stats;
   }
 
-  @Post('logs/:id')
+  @Get('logs/:id')
   startSendingLogs(@Param('id') containerId: string) {
-    this.logGateway.sendLogs(containerId);
-    return { message: 'Started sending logs for container ' + containerId };
+    return this.dockerService.getLogs(containerId);
+  }
+
+  @Get('info/:id')
+  async getInfo(@Param('id') id: string) {
+    return await this.dockerService.getInfo(id);
   }
 }
