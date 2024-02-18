@@ -11,7 +11,6 @@ export class DockerService {
 
   async findContainerById(id: string): Promise<Docker.ContainerInspectInfo> {
     const container = this.docker.getContainer(id);
-    console.log(await container.inspect());
     return await container.inspect();
   }
 
@@ -21,7 +20,6 @@ export class DockerService {
 
   async getStats(id: string) {
     const container = this.docker.getContainer(id);
-    const inspectionInfo = await container.inspect();
     const stats = await new Promise<any>((resolve, reject) => {
       container.stats({ stream: false }, (err, stats) => {
         if (err) {

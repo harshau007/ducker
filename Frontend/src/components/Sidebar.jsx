@@ -5,7 +5,7 @@ import ducker from '../assets/Logo.png'
 import axios from 'axios';
 
 
-const Sidebar = () => {
+const Sidebar = ({dataId}) => {
 
     const [dockerData, setDockerData] = useState([])
     const [id, setId] = useState([]);
@@ -28,18 +28,20 @@ const Sidebar = () => {
        dockerFetch();
    },[])
 
+   
+
   return (
 
-    <div className="w-[20%] border-1 bg-[#121212] flex flex-col gap-12">
-                <div className='mt-5 flex items-center justify-center gap-8'>
+    <div className="w-[20%] border-1 bg-[#121212] flex flex-col">
+                <div className='mt-5 flex items-center justify-center gap-8 mb-12'>
                     <div>
                         <img className=' w-16 h-16' src={ducker} alt="" />
                     </div>
                     <div className="flex items-center"><a href="/" className="mt-5 ml-2 font-bold text-2xl">Ducker</a></div>
                 </div>
                 {dockerData.map((data, index) => (
-                                <a href={`/docker/${id[index]}`} key={index}>
-                                    <div className="flex gap-8 justify-center items-center hover:bg-blue-500 trans" >
+                                <a href={`/docker/${id[index]}`} key={index} >
+                                    <div className={`flex gap-4 justify-center items-center rounded-md mb-4 ${id[index] == dataId ? "bg-blue-600" : " hover:bg-blue-500"}`} >
                                     <div>
                                         <img className=' w-12' src={docker} alt="" />
                                     </div>

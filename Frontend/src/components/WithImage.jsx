@@ -47,7 +47,7 @@ function WithImage(){
         <section className="flex gap-8 bg-black text-white h-screen">
 
 
-            <Sidebar />
+            <Sidebar dataId={id}/>
 
         <div className="w-[85%] ">
 

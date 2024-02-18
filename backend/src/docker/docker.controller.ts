@@ -20,7 +20,6 @@ export class DockerController {
   @Get('stats/:id')
   async getStats(@Param('id') id: string) {
     var stats = await this.dockerService.getStats(id);
-    console.log(stats);
     return stats;
   }
 
