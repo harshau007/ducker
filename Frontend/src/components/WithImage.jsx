@@ -6,6 +6,7 @@ import Logs from "./Logs";
 import Graph1 from "./Graph1";
 import Graph2 from "./Graph2";
 import Graph3 from "./Graph3";
+import ViewMore from "./ViewMore";
 
 
 function WithImage(){
@@ -88,7 +89,7 @@ function WithImage(){
             {
                 showDiv4 && (
                 <div className="bg-[#121212] w-full h-[82.8%] rounded-md">
-                    test 
+                    <ViewMore id={id}/>
                 </div>)
             }
 
