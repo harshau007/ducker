@@ -32,8 +32,8 @@ const Sidebar = ({dataId}) => {
 
   return (
 
-    <div className="w-[20%] border-1 bg-[#121212] flex flex-col">
-                <div className='mt-5 flex items-center justify-center gap-8 mb-12'>
+    <div className="w-[18%] border-1 bg-[#121212] flex flex-col p-5">
+                <div className='mt-5 p-2 flex items-center justify-center gap-8 mb-12'>
                     <div>
                         <img className=' w-16 h-16' src={ducker} alt="" />
                     </div>
@@ -41,7 +41,7 @@ const Sidebar = ({dataId}) => {
                 </div>
                 {dockerData.map((data, index) => (
                                 <a href={`/docker/${id[index]}`} key={index} >
-                                    <div className={`flex gap-4 justify-center items-center rounded-md mb-4 ${id[index] == dataId ? "bg-blue-600" : " hover:bg-blue-500"}`} >
+                                    <div className={`p-2 flex gap-4 justify-between items-center rounded-md mb-4 ${id[index] == dataId ? "bg-blue-600" : " hover:bg-blue-500"}`} >
                                     <div>
                                         <img className=' w-12' src={docker} alt="" />
                                     </div>
