@@ -12,10 +12,16 @@ const ViewMore = ({id}) => {
         const newData = newres.data
         console.log(newData);
         let msg = []
-        for(let i=0;i< newData.length;i++) {
+        for(let i=0;i<= newData.length - 1;i++) {
             // console.log(newData[i]);
-            const str = newData[i].slice(10,55)
-            msg.push(str)            
+            if(newData[i] === "") {
+                const str = "..."
+                msg.push(str)
+            }else {
+                const str = newData[i] || "No Logs Available......"
+                msg.push(str) 
+            }
+                       
         }
         setAdditionalInfo(res.data)
         setMessage(msg)
@@ -51,7 +57,7 @@ const ViewMore = ({id}) => {
 
         <div className='overflow-y-scroll h-1/2 bg-[#202020] rounded-md p-3'>
         {message.map((data,index) => (
-            <p>{data}</p>
+            <p key={index}>{data}</p>
         ))}
         </div>
         
