@@ -14,12 +14,15 @@ function WithImage(){
         setShowDiv1(true);
         setShowDiv2(false);
         setShowDiv3(false);
+        setShowDiv4(false);
     }
     const [showDiv2, setShowDiv2] = useState(false);
     const handleClick2 = () => {
         setShowDiv1(false);
         setShowDiv2(true);
         setShowDiv3(false);
+        setShowDiv4(false);
+
 
     }
     const [showDiv3, setShowDiv3] = useState(false);
@@ -27,6 +30,16 @@ function WithImage(){
         setShowDiv1(false);
         setShowDiv2(false);
         setShowDiv3(true);
+        setShowDiv4(false);
+
+    }
+    const [showDiv4, setShowDiv4] = useState(false);
+    const handleClick4 = () => {
+        setShowDiv1(false);
+        setShowDiv2(false);
+        setShowDiv3(false);
+        setShowDiv4(true);
+
     }
 
     const { id }= useParams();
@@ -39,15 +52,18 @@ function WithImage(){
         <div className="w-[85%] ">
 
 
-            <div className="flex gap-10 justify-around">
-            <div className="bg-[#121212] p-4 rounded-md cursor-pointer" onClick={handleClick1}>
+            <div className="flex gap-10 justify-around mt-6 mb-6 text-white">
+            <div className={`bg-[#121212] p-4 rounded-md cursor-pointer ${ showDiv1 ? `opacity-100` : `opacity-50`}`} onClick={handleClick1}>
                 CPU USAGE
             </div>
-            <div className="bg-[#121212] p-4 rounded-md cursor-pointer" onClick={handleClick2}>
+            <div className={`bg-[#121212] p-4 rounded-md cursor-pointer ${ showDiv2 ? `opacity-100` : `opacity-50`}`} onClick={handleClick2}>
                 RAM USAGE
             </div>
-            <div className="bg-[#121212] p-4 rounded-md cursor-pointer" onClick={handleClick3}>
+            <div className={`bg-[#121212] p-4 rounded-md cursor-pointer ${ showDiv3 ? `opacity-100` : `opacity-50`}`} onClick={handleClick3}>
                 NETWORK USAGE
+            </div>
+            <div className={`bg-[#121212] p-4 rounded-md cursor-pointer ${ showDiv4 ? `opacity-100` : `opacity-50`}`} onClick={handleClick4}>
+                VIEW MORE
             </div>
             </div>
             {
@@ -67,6 +83,12 @@ function WithImage(){
                 showDiv3 && (
                 <div className="bg-[#121212]">
                     <Graph3 id={id} />
+                </div>)
+            }
+            {
+                showDiv4 && (
+                <div className="bg-[#121212] w-full h-[82.8%] rounded-md">
+                    test 
                 </div>)
             }
 
