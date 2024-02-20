@@ -8,22 +8,12 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy the rest of the application code
 COPY . .
 
+EXPOSE 5173
+
 # Build the application
-RUN npm run build
-
-# Use a lightweight web server such as Nginx
-FROM nginx:alpine
-
-# Copy the built app from the build stage to the nginx web root directory
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Expose port 80
-EXPOSE 80
-
-# Start nginx to serve the built app
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "run", "dev"]

@@ -4,7 +4,7 @@ const Logs = ({ id }) => {
   const [stats, setStats] = useState(null);
 
   const fetchData = async () => {
-    const res = await axios.get(`http://localhost:3000/docker/stats/${id}`)
+    const res = await axios.get(`http://20.244.106.17:3000/docker/stats/${id}`)
     setStats(res.data)
   }
   useEffect(() => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NoImage from './components/NoImage';
 import WithImage from './components/WithImage';
 import Graph from './components/Graph1'
@@ -12,10 +12,6 @@ const App = () => {
   return (
     <Router>
       <div>
-        {/* Navigation Links */}
-
-
-        {/* Route configuration */}
         <Routes>
           <Route path="/" element={<NoImage />} />
           <Route path='/docker/:id' element={<WithImage />} />
@@ -29,3 +25,7 @@ const App = () => {
 
 // Export the App component
 export default App;
+
+/*
+
+*/
