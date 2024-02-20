@@ -51,7 +51,7 @@ const ViewMore = ({ id }) => {
                         Volumes : {additionalInfo.Config.Volumes || "null"}
                     </div>
                     <div>
-                        Gateway : {additionalInfo.NetworkSettings.Gateway}
+                        Gateway : {additionalInfo.NetworkSettings.Gateway || "null"}
                     </div>
                 </div>
                 <h6 className='mb-2 ml-2 text-xl'>Logs:</h6>

@@ -29,9 +29,9 @@ const Sidebar = ({ dataId }) => {
         <div className="w-full sm:w-[18%] border-1 bg-[#121212] flex flex-col p-5 overflow-auto">
             <div className='mt-5 p-2 flex items-center justify-center gap-8 mb-12'>
                 <div>
-                    <img className=' w-16 h-16' src={ducker} alt="" />
+                    <img className='w-18 h-18' src={ducker} alt="" />
                 </div>
-                <div className="flex items-center"><a href="/" className="mt-5 ml-2 font-bold text-2xl">Ducker</a></div>
+                <div className="flex items-center"><a href="/" className="mt-5 ml-2 font-bold text-5xl block text-transparent bg-clip-text bg-gradient-to-r from-blue-500  to-purple-500">Ducker</a></div>
             </div>
             {dockerData.map((data, index) => (
                 <a href={`/docker/${id[index]}`} key={index} >

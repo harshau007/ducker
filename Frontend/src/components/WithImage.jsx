@@ -7,6 +7,7 @@ import Graph2 from "./Graph2";
 import Graph3 from "./Graph3";
 import ViewMore from "./ViewMore";
 
+
 const SECTIONS = [
   { name: 'CPU USAGE', component: Graph1 },
   { name: 'RAM USAGE', component: Graph2 },
@@ -22,7 +23,7 @@ function WithImage() {
     <section className="flex gap-8 bg-black text-white h-screen">
       <Sidebar dataId={id} />
       <div className="w-[85%]">
-        <div className="flex gap-10 justify-around mt-6 mb-3 text-white">
+        <div className="flex gap-10 justify-around mt-6 mb-3 text-white transition-all ease-in-out">
           {SECTIONS.map(({ name }) => (
             <div
               key={name}
@@ -50,16 +51,15 @@ function WithImage() {
           onRequestClose={() => setModalIsOpen(false)}
           style={{
             overlay: {
-              backgroundColor: 'rgba(0, 0, 0, 0.75)',
-              transition: 'opacity 1s ease-in-out'
+              backgroundColor: 'rgba(0, 0, 0, 0.75)'
             },
             content: {
-              color: 'lightsteelblue',
-              backgroundColor: '#121212',
-              transition: 'all 1s ease-in-out'
+              color: 'white',
+              backgroundColor: '#121212'
             }
           }}
           contentLabel="Example Modal"
+          closeTimeoutMS={500}
         >
           <div className="flex justify-end">
             <button onClick={() => setModalIsOpen(false)} className="text-2xl font-bold">

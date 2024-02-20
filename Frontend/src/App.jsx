@@ -4,10 +4,8 @@ import NoImage from './components/NoImage';
 import WithImage from './components/WithImage';
 import Graph from './components/Graph1'
 import Logs from './components/Logs';
+import './App.css'
 
-// Components for different pages
-
-// Main App component
 const App = () => {
   return (
     <Router>
@@ -23,9 +21,4 @@ const App = () => {
   );
 };
 
-// Export the App component
 export default App;
-
-/*
-
-*/
