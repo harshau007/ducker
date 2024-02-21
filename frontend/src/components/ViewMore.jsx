@@ -23,7 +23,7 @@ const ViewMore = ({ id }) => {
                 msg.push(str)
             }
         }
-        setAdditionalInfo(res.data)
+        setAdditionalInfo(data)
         setMessage(msg)
     }
 
@@ -34,7 +34,7 @@ const ViewMore = ({ id }) => {
     if (additionalInfo) {
         return (<>
             <section className='h-full'>
-                <div className='grid grid-cols-3 grid-rows-2 h-1/2 place-items-center text-2xl font-semibold'>
+                <div className='grid grid-cols-4 grid-rows-3 h-1/2 place-items-center text-xl font-semibold'>
                     <div>
                         Status : {additionalInfo.State.Status}
                     </div>
@@ -45,13 +45,19 @@ const ViewMore = ({ id }) => {
                         Restart Count : {additionalInfo.RestartCount}
                     </div>
                     <div>
-                        Image Name : {additionalInfo.Config.Image}
+                        Image : {additionalInfo.Config.Image}
                     </div>
                     <div>
-                        Volumes : {additionalInfo.Config.Volumes || "null"}
+                        Volume Type : {additionalInfo.Mounts[0].Type || "null"}
                     </div>
                     <div>
-                        Gateway : {additionalInfo.NetworkSettings.Gateway || "null"}
+                        Volume Path : {additionalInfo.Mounts[0].Source || "null"}
+                    </div>
+                    <div>
+                        No. of Mounts : {additionalInfo.Mounts.length || "null"}
+                    </div>
+                    <div>
+                        Runtime : {additionalInfo.HostConfig.Runtime || "null"}
                     </div>
                 </div>
                 <h6 className='mb-2 ml-2 text-xl'>Logs:</h6>
