@@ -1,3 +1,4 @@
+![Ducker](frontend/src/assets/ducker.png)
 # Ducker  
 
 This project is a comprehensive solution for monitoring Docker containers. It displays running Docker containers and their stats and logs on a user-friendly frontend interface.
@@ -76,5 +77,5 @@ This project is the result of the hard work and dedication of a team of talented
 
 - [Harsh Upadhyay](https://github.com/harshau007) - Backend Developer
 - [Amir Kamal](https://github.com/0amirk) - Frontend Developer
-- [Aman Sharma](https://github.com/Amxn-2) - Frontend Developer
+- [Aman Sharma](https://github.com/harshau007) - Frontend Developer
 - [Dhiraj Kalwar](https://github.com/dhirajkalwar) - Frontend Developer
